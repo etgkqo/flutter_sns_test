@@ -6,10 +6,8 @@ name: Flutter_Web
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+    branches: 
+      - master
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -19,7 +17,7 @@ jobs:
   build:
     name: Build Web
     env:
-      my_secret: $
+      my_secret: ${{secrets.commit_secret}}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -32,4 +30,21 @@ jobs:
           channel: 'dev'
       - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter build web
+      - run: flutter build web --release
+        # 1. change path which exist lib/main.dart
+        working-directory: ./example_macos
+      - run: |
+          # 2. change path to [existed lib/main.dart path]/build/web
+          cd build/web
+          git init
+           # 3. change your email
+          git config --global user.email etgkqo@gmail.com
+          # 4. change your name
+          git config --global user.name etgkqo
+          git status
+          # 5. change your repository
+          git remote add origin https://$@github.com/etgkqo/flutter_sns_test.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "update"
+          git push origin gh-pages -f
