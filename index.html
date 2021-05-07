@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    Fore more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="snsTest">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="sns_test">
+  <meta name="google-signin-client_id" content="966484992260-tqgnrf9fkq02h3327m3kb7aiotuhvmtg.apps.googleusercontent.com">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>sns_test</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=2319437714');
+      });
+    }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAc-IlYjpr2uiKQOSKyKvJI4qyh_dH34mg",
+    authDomain: "sns-test-1fce7.firebaseapp.com",
+    projectId: "sns-test-1fce7",
+    storageBucket: "sns-test-1fce7.appspot.com",
+    messagingSenderId: "966484992260",
+    appId: "1:966484992260:web:f8d7cc6f8f88f4c577f051",
+    measurementId: "G-23BW4K8F0S"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
