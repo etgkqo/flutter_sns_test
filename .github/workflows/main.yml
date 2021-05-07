@@ -8,8 +8,6 @@ on:
   push:
     branches: 
       - master
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,17 +29,14 @@ jobs:
       - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter build web --release
+        working-directory: ./
       - run: |
-          # 2. change path to [existed lib/main.dart path]/build/web
           cd build/web
           git init
-           # 3. change your email
           git config --global user.email etgkqo@gmail.com
-          # 4. change your name
           git config --global user.name etgkqo
           git status
-          # 5. change your repository
-          git remote add origin https://$@github.com/etgkqo/flutter_sns_test.git
+          git remote add origin https://${{secrets.commit_secret}}@github.com/etgkqo/flutter_sns_test.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
